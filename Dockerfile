@@ -32,9 +32,9 @@ RUN apt-get clean && rm -r /var/lib/apt/lists/*
 # Install redis
 RUN pecl install redis && docker-php-ext-enable redis
 
-# Install php-apcu
-RUN pecl install apcu
-RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
+# Install php-apc
+RUN pecl install apc
+RUN echo "extension=apc.so" > /usr/local/etc/php/conf.d/apc.ini
 
 # Install xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
