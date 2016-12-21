@@ -64,5 +64,4 @@ RUN php -v
 VOLUME ["/app"]
 WORKDIR /app
 
-ENTRYPOINT ["phpunit"]
-CMD ["--help"]
+CMD ["phpunit"]
