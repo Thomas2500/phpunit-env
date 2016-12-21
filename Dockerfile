@@ -52,15 +52,6 @@ RUN wget -O /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar \
     && chmod 755 /usr/local/bin/phpunit \
     && chmod +x /usr/local/bin/phpunit
 
-# Disable xdebug for composer
-RUN sed -i "s/zend_extension=/;zend_extension=/g" /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-# Load xdebug Zend extension with php command
-RUN alias php="php -dzend_extension=xdebug.so"
-# PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
-RUN alias phpunit="php $(which phpunit)"
-
-RUN php -v
-
 VOLUME ["/app"]
 WORKDIR /app
 
