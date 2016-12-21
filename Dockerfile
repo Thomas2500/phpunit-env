@@ -40,7 +40,7 @@ RUN echo "extension=apc.so" > /usr/local/etc/php/conf.d/apc.ini
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Set timezone to Vienna
-RUN touch /usr/local/etc/php/conf.d/timezone.ini && echo "date.timezone = Europe\/Vienna/" > /usr/local/etc/php/conf.d/timezone.ini
+RUN touch /usr/local/etc/php/conf.d/timezone.ini && echo "date.timezone = UTC" > /usr/local/etc/php/conf.d/timezone.ini
 
 # Install composer and put binary into $PATH
 RUN curl -sS https://getcomposer.org/installer | php \
