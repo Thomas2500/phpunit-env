@@ -17,7 +17,6 @@ RUN apt-get install libssl-dev libc-client2007e-dev libkrb5-dev -yqq && docker-p
 RUN apt-get install zlib1g-dev libicu-dev g++ -yqq && docker-php-ext-install intl
 RUN docker-php-ext-install json
 RUN docker-php-ext-install mbstring
-RUN apt-get install libmcrypt4 libmcrypt-dev -yqq && docker-php-ext-install mcrypt
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install pdo_mysql
 RUN apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql
