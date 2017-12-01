@@ -1,4 +1,4 @@
-FROM php:7.1
+FROM php:7.2
 MAINTAINER Thomas Bella <thomas+docker@bella.network>
 
 # Install additional packages
@@ -11,7 +11,7 @@ RUN apt-get install libcurl3-dev -yqq && docker-php-ext-install curl
 RUN docker-php-ext-install exif
 RUN docker-php-ext-install fileinfo
 RUN apt-get install -yqq libssl-dev && docker-php-ext-install ftp
-RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng12-dev && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install gd
+RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install gd
 RUN apt-get install libmhash2 libmhash-dev -yqq && docker-php-ext-install hash
 RUN apt-get install libssl-dev libc-client2007e-dev libkrb5-dev -yqq && docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && docker-php-ext-install imap
 RUN apt-get install zlib1g-dev libicu-dev g++ -yqq && docker-php-ext-install intl
@@ -25,6 +25,7 @@ RUN apt-get install libsqlite0 sqlite sqlite3 libsqlite3-dev -yqq && docker-php-
 RUN docker-php-ext-install session
 RUN apt-get install zlib1g-dev -yqq && docker-php-ext-install zip
 RUN apt-get install libxml2-dev -yqq && docker-php-ext-install simplexml xmlrpc xml
+RUN apt-get install libsodium18 libsodium-dev -yqq && docker-php-ext-install sodium
 
 # Cleanup
 RUN apt-get clean && rm -r /var/lib/apt/lists/*
@@ -37,7 +38,8 @@ RUN pecl install apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
 
 # Install xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+# Currently (01.12.2017) not compatible with php7.2
+#RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Set timezone to Vienna
 RUN touch /usr/local/etc/php/conf.d/timezone.ini && echo "date.timezone = UTC" > /usr/local/etc/php/conf.d/timezone.ini
