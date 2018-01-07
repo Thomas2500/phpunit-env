@@ -2,7 +2,7 @@ FROM php:7.2
 MAINTAINER Thomas Bella <thomas+docker@bella.network>
 
 # Install additional packages
-RUN apt-get update && apt-get install -y ca-certificates git gettext openssh-client unzip wget curl build-essential php-pear
+RUN apt-get update && apt-get install -y ca-certificates git gettext openssh-client unzip wget curl build-essential
 
 # Install php extensions
 RUN docker-php-ext-install bcmath
