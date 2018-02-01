@@ -37,8 +37,7 @@ RUN pecl install apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
 
 # Install xdebug
-# Currently (01.12.2017) not compatible with php7.2
-#RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Set timezone to Vienna
 RUN touch /usr/local/etc/php/conf.d/timezone.ini && echo "date.timezone = UTC" > /usr/local/etc/php/conf.d/timezone.ini
