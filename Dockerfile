@@ -37,7 +37,7 @@ RUN pecl install channel://pecl.php.net/apcu-4.0.7
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
 
 # Install xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
 
 # Set timezone to Vienna
 RUN touch /usr/local/etc/php/conf.d/timezone.ini && echo "date.timezone = UTC" > /usr/local/etc/php/conf.d/timezone.ini
