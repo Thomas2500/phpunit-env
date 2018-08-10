@@ -11,7 +11,7 @@ RUN apt-get install libcurl3-dev -yqq && docker-php-ext-install curl
 RUN docker-php-ext-install exif
 RUN docker-php-ext-install fileinfo
 RUN apt-get install -yqq libssl-dev && docker-php-ext-install ftp
-RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng12-dev && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install gd
+RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install gd
 RUN apt-get install libmhash2 libmhash-dev -yqq && docker-php-ext-install hash
 RUN apt-get install libssl-dev libc-client2007e-dev libkrb5-dev -yqq && docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && docker-php-ext-install imap
 RUN apt-get install zlib1g-dev libicu-dev g++ -yqq && docker-php-ext-install intl
