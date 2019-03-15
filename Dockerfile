@@ -1,4 +1,4 @@
-FROM php:7.2
+FROM php:7.3
 MAINTAINER Thomas Bella <thomas+docker@bella.network>
 
 # Install additional packages
@@ -22,7 +22,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql
 RUN apt-get install libsqlite0 sqlite sqlite3 libsqlite3-dev -yqq && docker-php-ext-install pdo_sqlite
 RUN docker-php-ext-install session
-RUN apt-get install zlib1g-dev -yqq && docker-php-ext-install zip
+RUN apt-get install zlib1g-dev libzip-dev -yqq && docker-php-ext-install zip
 RUN apt-get install libxml2-dev -yqq && docker-php-ext-install simplexml xmlrpc xml
 RUN apt-get install libsodium18 libsodium-dev -yqq && docker-php-ext-install sodium
 
